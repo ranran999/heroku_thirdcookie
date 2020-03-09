@@ -5,7 +5,8 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
-  response.send('Hello World!')
+    const text = Object.keys(req.cookies).map(k=>`${k}=${req.cookies[k]}<br>`).join("\n")
+  response.send('Hello World!\n' + text)
 });
 
 app.listen(app.get('port'), function() {
