@@ -11,7 +11,7 @@ app.get('/', function(request, response) {
         
         var text = "";
         Object.keys(request.cookies).forEach(function(k){
-            text += `${k}=${request.cookies[k]}<br>`
+            text += `<br>${k}=${request.cookies[k]}`
         });
         response.send('Hello World!\n' + text)
     }catch(e){
