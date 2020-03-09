@@ -13,7 +13,7 @@ app.get('/', function(request, response) {
         Object.keys(request.cookies).forEach(function(k){
             text += `<br>${k}=${request.cookies[k]}`
         });
-        response.send('Hello World!\n' + text)
+        response.send('!Hello World!\n' + text)
     }catch(e){
         response.send(e.stack)
     }
