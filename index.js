@@ -23,7 +23,7 @@ app.get('/setCookie', function(request, response) {
     try{
         let opt = { 
             secure: request.query.secure === "true", 
-            httponly: request.query.httponly === "true",
+            httpOnly: request.query.httponly === "true",
         }
         if(request.query.domain){
             opt.domain = request.query.domain
@@ -32,7 +32,7 @@ app.get('/setCookie', function(request, response) {
             opt.path = request.query.path
         }
         if(request.query.samesite){
-            opt.samesite = request.query.samesite
+            opt.sameSite = request.query.samesite
         }
         response.cookie(request.query.name, request.query.value, opt)
         
