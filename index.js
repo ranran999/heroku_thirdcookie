@@ -29,10 +29,10 @@ app.get('/setCookie', function(request, response) {
             opt.domain = request.query.domain
         }
         if(request.query.path){
-            opt.domain = request.query.path
+            opt.path = request.query.path
         }
         if(request.query.samesite){
-            opt.domain = request.query.samesite
+            opt.samesite = request.query.samesite
         }
         response.cookie(request.query.name, request.query.value, opt)
         
