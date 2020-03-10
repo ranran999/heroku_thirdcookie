@@ -34,7 +34,7 @@ app.get('/setCookie', function(request, response) {
         if(request.query.samesite){
             opt.domain = request.query.samesite
         }
-        response.cookie(request.query.name, request.query.value, )
+        response.cookie(request.query.name, request.query.value, opt)
         
         var href = `/setCookie?name=${request.query.name}&value=${request.query.value}&domain=${request.query.domain}&path=${request.query.path}&secure=${request.query.secure}&httponly=${request.query.httponly}&samesite=${request.query.samesite}`
         response.send(`K!<br><a href=${href}>${href}</a>`)
