@@ -21,8 +21,8 @@ app.get('/', function(request, response) {
 });
 app.get('/setCookie', function(request, response) {
     try{
-        response.cookie(request.params.name, request.params.value, { domain: request.params.domain, path: request.params.path, secure: request.params.secure === "true" })
-        var href = `/setCookie?name=${request.params.name}&value=${request.params.value}&domain=${request.params.domain}&path=${request.params.path}&secure=${request.params.secure}`
+        response.cookie(request.query.name, request.query.value, { domain: request.query.domain, path: request.query.path, secure: request.query.secure === "true" })
+        var href = `/setCookie?name=${request.query.name}&value=${request.query.value}&domain=${request.query.domain}&path=${request.query.path}&secure=${request.query.secure}`
         response.send(`K!<br><a href=${href}>${href}</a>`)
         
     }catch(e){
