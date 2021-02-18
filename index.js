@@ -17,6 +17,31 @@ app.get("/", function (request, response) {
     response.send(e.stack);
   }
 });
+app.get("/test", function (request, response) {
+  try {
+    var text = "";
+    Object.keys(request.cookies).forEach(function (k) {
+      text += `<br>${k}=${request.cookies[k]}`;
+    });
+    response.send(
+      "test!\n" +
+        text +
+        "<br><iframe src='https://thirdcookie.herokuapp.com/redirect?status=301&path=http://mac-mini.airport:5000/'></iframe>"
+    );
+  } catch (e) {
+    response.send(e.stack);
+  }
+});
+app.get("/refresh", function (request, response) {
+  try {
+    const path = request.query.path || "/";
+    response.send(
+      "<html><body><script>location.href='" + path + "';</script></body></html>"
+    );
+  } catch (e) {
+    response.send(e.stack);
+  }
+});
 app.get("/redirect", function (request, response) {
   try {
     const status = request.query.status || "301";
