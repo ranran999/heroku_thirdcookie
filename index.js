@@ -37,7 +37,7 @@ app.get("/refresh", function (request, response) {
     const path = request.query.path || "/";
     response.send(
       //      "<html><body><script>location.href='" + path + "';</script></body></html>"
-      `<html><head><<meta http-equiv=”refresh” content=”2;URL=’${path}'” /></head><body>loading</body></html>`
+      `<html><head><meta http-equiv=refresh content=2;URL=${path} /></head><body>loading</body></html>`
     );
   } catch (e) {
     response.send(e.stack);
