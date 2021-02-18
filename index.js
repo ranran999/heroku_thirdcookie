@@ -26,7 +26,7 @@ app.get("/test", function (request, response) {
     response.send(
       "test!\n" +
         text +
-        "<br><iframe src='https://thirdcookie.herokuapp.com/redirect?status=301&path=http://mac-mini.airport:5000/'></iframe>"
+        "<br><iframe src='https://thirdcookie.herokuapp.com/refresh?status=301&path=http://mac-mini.airport:5000/'></iframe>"
     );
   } catch (e) {
     response.send(e.stack);
@@ -36,7 +36,8 @@ app.get("/refresh", function (request, response) {
   try {
     const path = request.query.path || "/";
     response.send(
-      "<html><body><script>location.href='" + path + "';</script></body></html>"
+      //      "<html><body><script>location.href='" + path + "';</script></body></html>"
+      `<html><head><<meta http-equiv=”refresh” content=”2;URL=’${path}'” /></head><body>loading</body></html>`
     );
   } catch (e) {
     response.send(e.stack);
