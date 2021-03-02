@@ -26,7 +26,7 @@ app.get("/test", function (request, response) {
     response.send(
       "test!\n" +
         text +
-        "<br><iframe src='https://thirdcookie.herokuapp.com/refresh?status=301&path=http://mac-mini.airport:5000/'></iframe>"
+        "<br><iframe src='https://thirdcookie.herokuapp.com/refresh?status=307&path=/'></iframe>"
     );
   } catch (e) {
     response.send(e.stack);
