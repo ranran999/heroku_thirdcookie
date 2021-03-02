@@ -24,7 +24,7 @@ app.get("/test", function (request, response) {
       text += `<br>${k}=${request.cookies[k]}`;
     });
     response.send(
-      "test!\n" +
+      "cookie=\n" +
         text +
         "<br><iframe src='https://thirdcookie.herokuapp.com/redirect?status=302&path=/'></iframe>"
     );
