@@ -91,7 +91,8 @@ app.get("/proxy", function (request, response) {
   try {
     var url = request.query.url;
     https.get(url,function(res){
-        response.setHeader('Access-Control-Allow-Headers','*');
+        response.setHeader('Access-Control-Allow-Origin','*');
+        response.setHeader('Access-Control-Allow-Headers','Origin, Authorization, Accept, Content-Type');
         response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
         res.pipe(response); 
     });
