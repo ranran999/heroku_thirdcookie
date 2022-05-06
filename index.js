@@ -1,6 +1,7 @@
 var express = require("express");
 var app = express();
 var cookieParser = require("cookie-parser");
+var https = require("https");
 
 app.set("port", process.env.PORT || 5000);
 app.use(express.static(__dirname + "/public"));
@@ -82,6 +83,18 @@ app.get("/setResponse", function (request, response) {
       text += `<br>${k}=${request.cookies[k]}`;
     });
     response.send("Hello World!\n" + text);
+  } catch (e) {
+    response.send(e.stack);
+  }
+});
+app.get("/proxy", function (request, response) {
+  try {
+    var url = request.query.url;
+    https.get(url,function(res){
+        response.setHeader('Access-Control-Allow-Headers','*');
+        response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+        res.pipe(response); 
+    });
   } catch (e) {
     response.send(e.stack);
   }
